@@ -58,8 +58,9 @@ export const team: TeamMember[] = [
   },
   {
     name: 'Uchida Terence',
-    role: 'Member',
-    bio: 'Insert bio here',
+    role: 'Researcher',
+    bio: 'Always curious',
     avatar: uchidaTerence,
+    links: [{ type: 'email', href: 'mailto:uchidaterence@gmail.com' }],
   },
 ];

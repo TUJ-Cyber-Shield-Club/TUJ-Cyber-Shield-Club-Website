@@ -37,7 +37,7 @@ public/                 ← favicons, robots.txt, social-preview image
 
 ## Deployment
 
-The site is hosted on **Cloudflare Pages**, connected to this GitHub repo. Every push to `main` triggers an automatic build and deploy; a typical publish is live about one to two minutes after the commit. You can watch builds in the Cloudflare dashboard under **Workers & Pages → tuj-cyber-shield-club-website → Deployments**.
+The site is hosted on **Cloudflare Pages**, connected to this GitHub repo. Every push to `main` triggers an automatic build and deploy; a typical publish is live about one to two minutes after the commit. You can watch builds in the Cloudflare dashboard under **Workers & Pages → tujcybershield → Deployments**.
 
 One-time Cloudflare project setup (an admin does this once):
 
@@ -54,7 +54,7 @@ The site is served at:
 https://tujcybershield.com/
 ```
 
-(The Cloudflare `https://tuj-cyber-shield-club-website.pages.dev/` address still works as a fallback.) The custom domain is configured in the Cloudflare Pages project under **Custom domains**. Because Cloudflare serves from the domain root, there is no `base` path in [astro.config.mjs](astro.config.mjs) (unlike a GitHub Pages project site). Cloudflare Pages is free with generous limits and works with private repos.
+(The Cloudflare `https://tujcybershield.pages.dev/` address still works as a fallback.) The custom domain is configured in the Cloudflare Pages project under **Custom domains**. Because Cloudflare serves from the domain root, there is no `base` path in [astro.config.mjs](astro.config.mjs) (unlike a GitHub Pages project site). Cloudflare Pages is free with generous limits and works with private repos.
 
 ## Credits
 

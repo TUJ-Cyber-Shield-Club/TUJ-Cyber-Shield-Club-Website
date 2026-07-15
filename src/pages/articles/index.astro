@@ -2,20 +2,25 @@
 import Base from '../../layouts/Base.astro';
 import ArticleCard from '../../components/ArticleCard.astro';
 import Search from '../../components/Search.astro';
-import { collectTags, getPublishedArticles, withBase } from '../../utils/articles';
+import {
+  collectIssues,
+  collectTags,
+  getPublishedArticles,
+  issueLabel,
+  withBase,
+} from '../../utils/articles';
 
 const articles = await getPublishedArticles();
 const tags = collectTags(articles);
+const issues = collectIssues(articles); // "YYYY-MM", newest first
 ---
 
 <Base
   title="All articles · Cyber Shield"
-  description="Every Cyber Shield article on staying safe online — phishing, passwords, scams, privacy and more — newest first."
+  description="Every Cyber Shield article on staying safe online: phishing, passwords, scams, privacy and more, newest first."
 >
   <h1>All articles</h1>
-  <p class="intro meta">
-    {articles.length} plain-language guides to staying safe online, newest first.
-  </p>
+  <p class="intro meta">All articles are displayed newest to oldest.</p>
 
   <Search />
 
@@ -37,10 +42,57 @@ const tags = collectTags(articles);
     </ul>
   </nav>
 
+  <div class="date-filter" id="date-filter-wrap" hidden>
+    <label class="flank" for="date-filter">Filter by month</label>
+    <div class="date-controls">
+      <select id="date-filter">
+        <option value="">All dates</option>
+        {issues.map((issue) => <option value={issue}>{issueLabel(issue)}</option>)}
+      </select>
+      <p class="meta" id="filter-status" role="status" aria-live="polite"></p>
+    </div>
+  </div>
+
   <ul class="card-grid">
     {articles.map((article) => <ArticleCard article={article} headingLevel="h2" />)}
   </ul>
+
+  <p class="meta empty-state" id="filter-empty" hidden>
+    No articles for that month yet.
+  </p>
 </Base>
+
+<script>
+  const wrap = document.getElementById('date-filter-wrap');
+  const select = document.getElementById('date-filter') as HTMLSelectElement | null;
+  const status = document.getElementById('filter-status');
+  const empty = document.getElementById('filter-empty');
+  const cards = Array.from(document.querySelectorAll<HTMLElement>('.card-grid > .card'));
+
+  if (wrap && select && status && empty) {
+    // Progressive enhancement: only reveal the control once JS can drive it.
+    wrap.hidden = false;
+
+    const apply = () => {
+      const value = select.value;
+      let shown = 0;
+      for (const card of cards) {
+        const match = value === '' || card.dataset.issue === value;
+        card.hidden = !match;
+        if (match) shown += 1;
+      }
+      empty.hidden = shown !== 0;
+      if (value === '') {
+        status.textContent = '';
+      } else {
+        const label = select.options[select.selectedIndex].text;
+        status.textContent = `${shown} article${shown === 1 ? '' : 's'} from ${label}.`;
+      }
+    };
+
+    select.addEventListener('change', apply);
+  }
+</script>
 
 <style>
   .intro {
@@ -62,5 +114,48 @@ const tags = collectTags(articles);
     list-style: none;
     margin: 0;
     padding: 0;
+  }
+
+  .date-filter {
+    margin-block: 0 2rem;
+  }
+
+  .date-filter .flank {
+    margin-bottom: 0.75rem;
+  }
+
+  .date-controls {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.5rem 1rem;
+  }
+
+  select {
+    font: inherit;
+    font-weight: 600;
+    color: var(--text);
+    background: var(--bg-raised);
+    border: 1px solid var(--line-strong);
+    border-radius: 8px;
+    padding: 0.5rem 2.25rem 0.5rem 0.85rem;
+    cursor: pointer;
+    /* custom chevron so the control matches both themes */
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%2357697a' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 0.7rem center;
+  }
+
+  select:hover {
+    border-color: var(--accent);
+  }
+
+  #filter-status {
+    margin: 0;
+  }
+
+  .empty-state {
+    margin-top: 1rem;
   }
 </style>

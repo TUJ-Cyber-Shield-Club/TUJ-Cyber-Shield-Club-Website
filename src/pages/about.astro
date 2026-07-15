@@ -2,7 +2,11 @@
 import { Image } from 'astro:assets';
 import Base from '../layouts/Base.astro';
 import logo from '../assets/logo.png';
+import developer from '../assets/team/carl-masters.png';
 import { withBase } from '../utils/articles';
+
+const joinForm =
+  'https://docs.google.com/forms/d/e/1FAIpQLSf8e37fWWAWD6axVy3mzr_sbEWz8ce-pZ0NZT-cZfEaTNVqkA/viewform?usp=header';
 ---
 
 <Base
@@ -36,44 +40,71 @@ import { withBase } from '../utils/articles';
       <p>
         Our activities welcome all skill levels and backgrounds, though we are always excited to
         connect with students who have a passion for deep technical research or a talent for
-        writing and communication — fostering a culture of curiosity, critical thinking, and
+        writing and communication, fostering a culture of curiosity, critical thinking, and
         community-driven protection.
-      </p>
-
-      <h2>How we're different from Cyber Owls</h2>
-      <p>
-        TUJ already has a great technical hacking club — the Cyber Owls — where students practice
-        offensive security, capture-the-flag competitions, and hands-on tooling. Cyber Shield is
-        the other half of the picture: we're a <strong>publication</strong>, not a lab. Our job is
-        to take what security researchers (including Cyber Owls members!) discover and turn it into
-        clear, friendly advice that a first-year business or arts student can act on the same day.
-        If you want to break things, join Cyber Owls. If you want to help people protect
-        themselves — and get real bylines doing it — you're in the right place.
       </p>
 
       <h2>What members actually do</h2>
       <ul>
-        <li><strong>Research</strong> — track current scams, breaches, and threats affecting students.</li>
-        <li><strong>Write</strong> — turn that research into short, jargon-free monthly articles.</li>
-        <li><strong>Edit</strong> — every article is peer-reviewed for accuracy and readability.</li>
-        <li><strong>Learn</strong> — guest speakers and workshops, open to every skill level.</li>
+        <li><strong>Research:</strong> track current scams, breaches, and threats affecting students.</li>
+        <li><strong>Write:</strong> turn that research into short, jargon-free monthly articles.</li>
+        <li><strong>Edit:</strong> every article is peer-reviewed for accuracy and readability.</li>
+        <li><strong>Learn:</strong> guest speakers and workshops, open to every skill level.</li>
       </ul>
 
       <h2>How to join</h2>
-      <!-- EDIT ME: replace the placeholders below with real contact details. -->
       <p>
-        We'd love to have you — no application, no experience needed. Reach us at
-        <strong>cybershield@example.edu</strong> (placeholder — update this), find us on the TUJ
-        student-club portal, or drop by our weekly meeting: <strong>Thursdays, 5:00 p.m., Room
-        TBD</strong> (placeholder — update this). Bring a laptop if you have one; curiosity is the
-        only requirement.
+        We'd love to have you. No application, no experience needed. Curiosity is the only
+        requirement. Follow us on Instagram at{' '}
+        <a href="https://www.instagram.com/tuj_cyber_shield_club/" target="_blank" rel="noopener"
+          >@tuj_cyber_shield_club</a
+        >{' '}
+        for updates, and when you're ready to sign up, use the form below.
+      </p>
+      <p class="join-cta">
+        <a class="button" href={joinForm} target="_blank" rel="noopener">Join here</a>
       </p>
 
       <p>
-        Prefer to start by reading? <a href={withBase('/articles/')}>Browse our articles</a> or
-        subscribe to the <a href={withBase('/rss.xml')}>RSS feed</a>.
+        Prefer to start by reading? <a href={withBase('/articles/')}>Browse our articles</a>,{' '}
+        <a href={withBase('/team/')}>meet the team</a>, or subscribe to the{' '}
+        <a href={withBase('/rss.xml')}>RSS feed</a>.
       </p>
     </div>
+
+    <section class="developer" aria-labelledby="developer-heading">
+      <p class="flank">Behind the site</p>
+      <h2 id="developer-heading">The developer</h2>
+      <div class="developer-card">
+        <Image
+          class="dev-avatar"
+          src={developer}
+          alt="Photo of Carl Masters"
+          width="220"
+          height="220"
+          fit="cover"
+          loading="lazy"
+        />
+        <div class="prose dev-bio">
+          <!-- EDIT ME, Carl: personalize this bio and swap in a real photo at
+               src/assets/team/carl-masters.png -->
+          <p>
+            This site was designed and built by <strong
+              ><a href="https://carlmasters.com" target="_blank" rel="noopener">Carl Masters</a
+              ></strong
+            >, a cybersecurity student at TUJ and founder of the Cyber Shield Club. The site was
+            built to be fast,
+            accessible, and simple enough that any club member can publish an article without
+            writing a line of code.
+          </p>
+          <p>
+            If you have any questions about the website or would like to report any issues, please
+            reach out at{' '}
+            <a href="mailto:carl.masters.dev@protonmail.com">carl.masters.dev@protonmail.com</a>.
+          </p>
+        </div>
+      </div>
+    </section>
   </div>
 </Base>
 
@@ -105,5 +136,54 @@ import { withBase } from '../utils/articles';
 
   .prose {
     margin-inline: auto;
+  }
+
+  .join-cta {
+    margin-block: 1.25rem;
+  }
+
+  .developer {
+    max-width: 46rem;
+    margin: clamp(3rem, 8vw, 4.5rem) auto 0;
+    padding-top: clamp(2rem, 5vw, 3rem);
+    border-top: 1px solid var(--line);
+  }
+
+  .developer h2 {
+    font-size: 1.6rem;
+    margin-top: 0.5rem;
+  }
+
+  .developer-card {
+    display: flex;
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+    align-items: flex-start;
+  }
+
+  .dev-avatar {
+    flex: 0 0 auto;
+    width: 6rem;
+    height: 6rem;
+    border-radius: 50%;
+    border: 1px solid var(--line);
+    background: var(--bg-inset);
+    object-fit: cover;
+  }
+
+  .dev-bio {
+    margin: 0;
+    font-size: 1.05rem;
+  }
+
+  .dev-bio > * + * {
+    margin-top: 1em;
+  }
+
+  @media (max-width: 34rem) {
+    .developer-card {
+      flex-direction: column;
+      gap: 1rem;
+    }
   }
 </style>

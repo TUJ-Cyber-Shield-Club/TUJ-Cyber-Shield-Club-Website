@@ -11,7 +11,7 @@ const pagefindBase = withBase('/pagefind');
   <label class="flank" for="search-box-input" id="search-label">Search articles</label>
   <div id="search" data-base={pagefindBase}></div>
   <noscript>
-    <p class="meta">Search needs JavaScript. No problem — every article is listed below.</p>
+    <p class="meta">Search needs JavaScript. No problem, every article is listed below.</p>
   </noscript>
 </div>
 
@@ -27,7 +27,7 @@ const pagefindBase = withBase('/pagefind');
         element: '#search',
         showImages: false,
         showSubResults: true,
-        translations: { placeholder: 'Search articles — try “phishing” or “passwords”' },
+        translations: { placeholder: 'Search articles, e.g. “phishing” or “passwords”' },
       });
       const input = container.querySelector('input');
       if (input) input.id = 'search-box-input';

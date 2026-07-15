@@ -4,7 +4,7 @@ import { getPublishedArticles, withBase } from '../utils/articles';
 export async function GET(context) {
   const articles = await getPublishedArticles();
   return rss({
-    title: 'Cyber Shield — TUJ digital safety newsletter',
+    title: 'Cyber Shield: TUJ digital safety newsletter',
     description:
       'Monthly, plain-language security advice from TUJ’s Cyber Shield Club: phishing, passwords, scams, and privacy explained for everyday students.',
     site: context.site,

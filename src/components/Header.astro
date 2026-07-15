@@ -4,14 +4,22 @@ import shield from '../assets/logo-shield.png';
 import ThemeToggle from './ThemeToggle.astro';
 import { withBase } from '../utils/articles';
 
+const home = withBase('/');
 const links = [
+  { href: home, label: 'Home' },
   { href: withBase('/articles/'), label: 'Articles' },
   { href: withBase('/issues/'), label: 'Issues' },
+  { href: withBase('/team/'), label: 'Team' },
   { href: withBase('/about/'), label: 'About' },
 ];
 
-const current = Astro.url.pathname;
-const isCurrent = (href: string) => current === href || current.startsWith(`${href}`);
+// Normalize trailing slashes so "/base" and "/base/" compare equal.
+const current = Astro.url.pathname.replace(/\/$/, '') || '/';
+const isCurrent = (href: string) => {
+  const target = href.replace(/\/$/, '') || '/';
+  // Home should only light up on the home page, never as a prefix of others.
+  return href === home ? current === target : current === target || current.startsWith(`${target}/`);
+};
 ---
 
 <header class="site-header">

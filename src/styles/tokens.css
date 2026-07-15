@@ -2,19 +2,19 @@
    Cyber Shield design tokens
 
    Brand palette (named before any component was written):
-     ink    #10202F  deep navy — page base in dark, text in light
-     paper  #F6F8F7  cool off-white — page base in light
+     ink    #10202F  deep navy, page base in dark, text in light
+     paper  #F6F8F7  cool off-white, page base in light
      teal   #0E7C7C  security accent, taken from the club shield (AA on paper)
      glow   #4CC8C4  the same accent tuned for dark backgrounds (AA on ink)
      slate  #57697A  muted supporting text
      mist   #D9E2E4  hairlines, chips, quiet surfaces
 
    Type roles:
-     display — Bricolage Grotesque (headings, nav, labels, mastheads)
-     body    — Source Serif 4 (article prose at ~65ch)
+     display  Libre Franklin (headings, nav, labels, mastheads)
+     body     Source Serif 4 (article prose at ~65ch)
 
-   Layout concept: quiet editorial pages; one signature element — the
-   "flanked label" masthead (a small caps label between two em-rules),
+   Layout concept: quiet editorial pages with one signature element, the
+   "flanked label" masthead (a small caps label between two rules),
    echoing the ruled wordmark under the club shield. Used for issue
    headers, section labels, and the hero kicker. Everything else stays flat.
 --------------------------------------------------------------------------- */
@@ -29,10 +29,10 @@
   --mist: #d9e2e4;
 
   /* type */
-  --font-display: 'Bricolage Grotesque Variable', 'Avenir Next', 'Segoe UI', system-ui, sans-serif;
+  --font-display: 'Libre Franklin Variable', 'Helvetica Neue', 'Segoe UI', system-ui, sans-serif;
   --font-body: 'Source Serif 4 Variable', Georgia, 'Times New Roman', serif;
 
-  /* semantic — light theme (default) */
+  /* semantic tokens, light theme (default) */
   color-scheme: light;
   --bg: var(--paper);
   --bg-raised: #ffffff;

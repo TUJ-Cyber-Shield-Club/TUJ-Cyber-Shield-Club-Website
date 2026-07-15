@@ -51,6 +51,6 @@ for emphasis, *italics* for titles or light stress.
 1. Numbered lists work too
 2. Great for step-by-step instructions
 
-> Indented quotes look like this — good for "here's what the scam email said."
+> Indented quotes look like this. Good for "here's what the scam email said."
 
 End with something actionable: what should the reader do today?

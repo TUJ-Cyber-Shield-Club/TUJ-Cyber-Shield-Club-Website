@@ -120,7 +120,7 @@ main {
   opacity: 0.75;
 }
 
-/* stretch the trailing rule across the page — used as a section heading */
+/* stretch the trailing rule across the page (used as a section heading) */
 .flank--lead::before {
   display: none;
 }
@@ -302,6 +302,12 @@ a.chip:hover {
   border: 1px solid var(--line);
   border-radius: 10px;
   transition: border-color 120ms ease, box-shadow 120ms ease;
+}
+
+/* `display: flex` above would defeat the hidden attribute, so restate it
+   (used by the client-side date filter on the articles page). */
+.card[hidden] {
+  display: none;
 }
 
 .card:hover {

@@ -53,9 +53,9 @@ Then delete all the lines starting with `#` (those are instructions, not content
 3. Keep **"Commit directly to the `main` branch"** selected.
 4. Click **Commit changes**.
 
-That's it. GitHub Actions now builds and deploys the site automatically. After ~2 minutes, refresh the live site and your article is up — on the home page, the articles list, its issue page, its tags, the RSS feed, and in search.
+That's it. Cloudflare Pages now builds and deploys the site automatically. After ~2 minutes, refresh the live site and your article is up — on the home page, the articles list, its issue page, its tags, the RSS feed, and in search.
 
-You can watch the progress under the repository's **Actions** tab: a yellow dot means building, a green check means live. A red X means the build rejected something — click into it, read the error (it names the file and field), edit your file on GitHub, and commit again.
+An admin can watch the progress in the Cloudflare dashboard (Workers & Pages → the project → Deployments): a build in progress, a green "Success" when it's live, or a red "Failed" if the build rejected something (usually a frontmatter mistake — the log names the file and field). If a build fails, edit your file on GitHub, fix the field, and commit again.
 
 ## Adding a cover image
 

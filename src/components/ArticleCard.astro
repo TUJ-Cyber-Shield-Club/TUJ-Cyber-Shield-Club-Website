@@ -15,7 +15,7 @@ const url = withBase(`/articles/${article.id}/`);
 const minutes = readingTime(article.body);
 ---
 
-<li class="card">
+<li class="card" data-issue={article.data.issue}>
   {
     coverImage && (
       <div class="card-cover">

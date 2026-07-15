@@ -1,0 +1,158 @@
+---
+import { Image } from 'astro:assets';
+import Base from '../layouts/Base.astro';
+import SocialIcons from '../components/SocialIcons.astro';
+import { team } from '../data/team';
+import { withBase } from '../utils/articles';
+
+const joinForm =
+  'https://docs.google.com/forms/d/e/1FAIpQLSf8e37fWWAWD6axVy3mzr_sbEWz8ce-pZ0NZT-cZfEaTNVqkA/viewform?usp=header';
+---
+
+<Base
+  title="Meet the team · Cyber Shield"
+  description="The students behind Cyber Shield: the writers, editors, and organizers who research and publish TUJ's monthly digital-safety newsletter."
+>
+  <header class="masthead">
+    <p class="flank flank--center">The people behind the publication</p>
+    <h1>Meet the team</h1>
+    <p class="lede meta">
+      Cyber Shield is written and edited entirely by students. Here's who researches the threats,
+      writes the guides, and keeps each issue on schedule.
+    </p>
+  </header>
+
+  <ul class="team-grid">
+    {
+      team.map((member) => (
+        <li class="member">
+          <Image
+            class="avatar"
+            src={member.avatar}
+            alt={`Photo of ${member.name}`}
+            width="240"
+            height="240"
+            fit="cover"
+            loading="lazy"
+          />
+          <div class="member-body">
+            <h2>{member.name}</h2>
+            <p class="role">{member.role}</p>
+            <p class="bio">{member.bio}</p>
+            <SocialIcons links={member.links} name={member.name} />
+          </div>
+        </li>
+      ))
+    }
+  </ul>
+
+  <aside class="join">
+    <p class="flank flank--center">Want to join?</p>
+    <h2>There's room for you on this team.</h2>
+    <p>
+      No experience needed, just curiosity and a willingness to help people stay safe online.
+      Writers, researchers, editors, and organizers all welcome.
+    </p>
+    <div class="cta">
+      <a class="button" href={joinForm} target="_blank" rel="noopener">Join here</a>
+      <a class="button button--ghost" href={withBase('/about/')}>About the club</a>
+    </div>
+  </aside>
+</Base>
+
+<style>
+  .masthead {
+    text-align: center;
+    max-width: 42rem;
+    margin: 0 auto 3rem;
+  }
+
+  .masthead h1 {
+    font-size: clamp(2rem, 5.5vw, 3rem);
+    margin-top: 1rem;
+  }
+
+  .lede {
+    margin-top: 0.8rem;
+  }
+
+  .team-grid {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 1.25rem;
+    grid-template-columns: repeat(auto-fill, minmax(min(22rem, 100%), 1fr));
+  }
+
+  .member {
+    display: flex;
+    gap: 1.1rem;
+    padding: 1.4rem;
+    background: var(--bg-raised);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+  }
+
+  .avatar {
+    flex: 0 0 auto;
+    width: 4.5rem;
+    height: 4.5rem;
+    border-radius: 50%;
+    border: 1px solid var(--line);
+    background: var(--bg-inset);
+    object-fit: cover;
+  }
+
+  .member-body h2 {
+    font-size: 1.2rem;
+  }
+
+  .role {
+    color: var(--accent);
+    font-weight: 650;
+    font-size: 0.85rem;
+    letter-spacing: 0.02em;
+    margin-top: 0.15rem;
+  }
+
+  .bio {
+    margin-top: 0.6rem;
+    color: var(--text-muted);
+    font-family: var(--font-body);
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+
+  .join {
+    text-align: center;
+    max-width: 40rem;
+    margin: clamp(3rem, 8vw, 4.5rem) auto 0;
+    padding: 2.25rem 1.5rem;
+    background: var(--bg-inset);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+  }
+
+  .join h2 {
+    font-size: clamp(1.4rem, 4vw, 1.9rem);
+    margin-top: 0.6rem;
+  }
+
+  .join p {
+    margin-top: 0.75rem;
+    color: var(--text-muted);
+    font-family: var(--font-body);
+    font-size: 1.05rem;
+    max-width: 34rem;
+    margin-inline: auto;
+  }
+
+  .cta {
+    display: flex;
+    justify-content: center;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    margin-top: 1.5rem;
+  }
+</style>

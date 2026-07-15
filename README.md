@@ -37,18 +37,24 @@ public/                 ← favicons, robots.txt, social-preview image
 
 ## Deployment
 
-Every push to `main` triggers [.github/workflows/deploy.yml](.github/workflows/deploy.yml), which builds the site and deploys it to GitHub Pages. A typical publish is live about two minutes after the commit.
+The site is hosted on **Cloudflare Pages**, connected to this GitHub repo. Every push to `main` triggers an automatic build and deploy; a typical publish is live about one to two minutes after the commit. You can watch builds in the Cloudflare dashboard under **Workers & Pages → tuj-cyber-shield-club-website → Deployments**.
 
-One-time repository setup (an admin has to do this once):
+One-time Cloudflare project setup (an admin does this once):
 
-1. **Settings → Pages → Build and deployment → Source: GitHub Actions.**
-2. Note: GitHub Pages is free for **public** repositories. If this repo is private, either make it public or the organization needs a paid plan.
+1. Cloudflare dashboard → **Workers & Pages → Create → Pages → Connect to Git**, and pick this repository.
+2. Set the build configuration:
+   - **Framework preset:** Astro
+   - **Build command:** `npm run build`
+   - **Build output directory:** `dist`
+3. **Save and Deploy.**
 
 The site is served at:
 
 ```
-https://tuj-cyber-shield-club.github.io/TUJ-Cyber-Shield-Club-Website/
+https://tuj-cyber-shield-club-website.pages.dev/
 ```
+
+Because Cloudflare serves from the domain root, there is no `base` path in [astro.config.mjs](astro.config.mjs) (unlike a GitHub Pages project site). Cloudflare Pages is free with generous limits and works with private repos.
 
 ## Custom domain setup (when the club buys one)
 
@@ -57,35 +63,16 @@ Say the club buys `cybershield.example` (replace with the real domain everywhere
 **1. One-line config change** in [astro.config.mjs](astro.config.mjs):
 
 ```diff
--  site: 'https://tuj-cyber-shield-club.github.io',
--  base: '/TUJ-Cyber-Shield-Club-Website',
+-  site: 'https://tuj-cyber-shield-club-website.pages.dev',
 +  site: 'https://cybershield.example',
 ```
 
-(Change `site`, delete the `base` line.) Also update the `Sitemap:` URL in [public/robots.txt](public/robots.txt).
+Also update the `Sitemap:` URL in [public/robots.txt](public/robots.txt) to the new domain.
 
-**2. Add the CNAME file** — create `public/CNAME` containing exactly one line:
+**2. Add the domain in Cloudflare:** the Pages project → **Custom domains → Set up a custom domain**, and enter the domain.
 
-```
-cybershield.example
-```
-
-**3. DNS records** — at the domain registrar, create:
-
-| Type | Name | Value |
-|------|------|-------|
-| A | `@` | `185.199.108.153` |
-| A | `@` | `185.199.109.153` |
-| A | `@` | `185.199.110.153` |
-| A | `@` | `185.199.111.153` |
-| AAAA (optional, IPv6) | `@` | `2606:50c0:8000::153` |
-| AAAA (optional) | `@` | `2606:50c0:8001::153` |
-| AAAA (optional) | `@` | `2606:50c0:8002::153` |
-| AAAA (optional) | `@` | `2606:50c0:8003::153` |
-| CNAME | `www` | `tuj-cyber-shield-club.github.io` |
-
-**4. In GitHub:** Settings → Pages → Custom domain → enter the domain, wait for the DNS check to pass, then tick **Enforce HTTPS** (the certificate can take up to an hour to issue the first time).
+**3. DNS:** if the domain is already on Cloudflare, it adds the record for you automatically. If the domain is registered elsewhere, add a `CNAME` record pointing the domain (or `www`) at `tuj-cyber-shield-club-website.pages.dev`. Cloudflare provisions the HTTPS certificate automatically, usually within minutes.
 
 ## Credits
 
-Designed and maintained by Cyber Shield club members. Type set in Bricolage Grotesque and Source Serif 4 (self-hosted via Fontsource).
+Designed and built by Carl Masters for the Cyber Shield Club. Type set in Libre Franklin and Source Serif 4 (self-hosted via Fontsource).

@@ -2,14 +2,14 @@
 import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
 
-// GitHub Pages project site:
-//   https://tuj-cyber-shield-club.github.io/TUJ-Cyber-Shield-Club-Website/
+// Deployed on Cloudflare Pages, served from the domain root:
+//   https://tuj-cyber-shield-club-website.pages.dev/
 //
 // When the club buys a custom domain (e.g. cybershield.example):
-//   1. Change `site` to 'https://cybershield.example' and delete the `base` line.
-//   2. Add a `public/CNAME` file containing the bare domain (see README).
+//   Change `site` to 'https://cybershield.example' and add the domain under
+//   the Cloudflare Pages project (Custom domains). No `base` is needed because
+//   the site is served from the root.
 export default defineConfig({
-  site: 'https://tuj-cyber-shield-club.github.io',
-  base: '/TUJ-Cyber-Shield-Club-Website',
+  site: 'https://tuj-cyber-shield-club-website.pages.dev',
   integrations: [sitemap()],
 });

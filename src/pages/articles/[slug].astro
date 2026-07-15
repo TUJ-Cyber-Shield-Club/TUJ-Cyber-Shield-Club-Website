@@ -93,7 +93,7 @@ const ogImage = coverImage
           {sameIssue.map((other) => (
             <li>
               <a href={withBase(`/articles/${other.id}/`)}>{other.data.title}</a>
-              <span class="meta"> — {other.data.description}</span>
+              <span class="meta">: {other.data.description}</span>
             </li>
           ))}
         </ul>

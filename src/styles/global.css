@@ -343,15 +343,6 @@ a.chip:hover {
   line-height: 1.55;
 }
 
-.card .chips {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.4rem;
-  position: relative; /* keep tag links above the card overlay */
-  z-index: 1;
-  width: fit-content;
-}
-
 .card .meta {
   margin-top: auto;
 }

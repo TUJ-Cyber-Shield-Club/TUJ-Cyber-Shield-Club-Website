@@ -6,6 +6,7 @@ authors: ["Marcus Bell"]
 tags: ["scams", "qr-codes", "phones"]
 issue: "2026-07"
 draft: false
+demo: true
 ---
 
 QR codes won. They're on club flyers, cafe tables, event posters, and payment kiosks, and we all scan them without a second thought. Scammers noticed, and "quishing" (QR phishing) is now one of the fastest-growing scams targeting students in Japan and everywhere else.

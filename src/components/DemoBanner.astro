@@ -1,0 +1,55 @@
+---
+interface Props {
+  /** Tailors the wording to where the banner appears. */
+  context?: 'article' | 'issue' | 'list';
+}
+
+const { context = 'article' } = Astro.props;
+
+const message = {
+  article:
+    'This is a demo article: a sample template that shows the layout and voice of the site, not a real Cyber Shield publication.',
+  issue:
+    'This is a demo issue: the articles below are sample templates, not real Cyber Shield publications.',
+  list: 'The articles shown here are demo templates, not real Cyber Shield publications yet.',
+}[context];
+---
+
+<aside class="demo-banner" role="note" aria-label="Demo content notice">
+  <span class="demo-badge">Demo</span>
+  <p>{message}</p>
+</aside>
+
+<style>
+  .demo-banner {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1.75rem;
+    padding: 0.7rem 0.9rem;
+    border: 1px solid rgb(232 115 12 / 0.45);
+    border-left: 4px solid #e8730c;
+    border-radius: 8px;
+    background: rgb(232 115 12 / 0.12);
+    color: var(--text);
+    font-family: var(--font-display);
+    font-size: 0.92rem;
+    line-height: 1.45;
+  }
+
+  .demo-badge {
+    flex: none;
+    padding: 0.22rem 0.55rem;
+    border-radius: 4px;
+    background: #e8730c;
+    color: #2b1600;
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .demo-banner p {
+    margin: 0;
+  }
+</style>

@@ -1,6 +1,7 @@
 ---
 import Base from '../../layouts/Base.astro';
 import ArticleCard from '../../components/ArticleCard.astro';
+import DemoBanner from '../../components/DemoBanner.astro';
 import { collectIssues, getPublishedArticles, issueLabel, withBase } from '../../utils/articles';
 
 export async function getStaticPaths() {
@@ -14,6 +15,7 @@ export async function getStaticPaths() {
 const { issue } = Astro.params;
 const { inIssue } = Astro.props;
 const label = issueLabel(issue!);
+const hasDemo = inIssue.some((a) => a.data.demo);
 ---
 
 <Base
@@ -28,6 +30,8 @@ const label = issueLabel(issue!);
       club members.
     </p>
   </header>
+
+  {hasDemo && <DemoBanner context="issue" />}
 
   <ul class="card-grid">
     {inIssue.map((article, i) => <ArticleCard article={article} headingLevel="h2" eager={i === 0} />)}

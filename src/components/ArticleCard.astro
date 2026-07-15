@@ -10,7 +10,7 @@ interface Props {
 }
 
 const { article, headingLevel: Heading = 'h3', eager = false } = Astro.props;
-const { title, description, pubDate, authors, tags, coverImage, coverAlt, draft } = article.data;
+const { title, description, pubDate, authors, coverImage, coverAlt, draft } = article.data;
 const url = withBase(`/articles/${article.id}/`);
 const minutes = readingTime(article.body);
 ---
@@ -27,19 +27,6 @@ const minutes = readingTime(article.body);
           loading={eager ? 'eager' : 'lazy'}
         />
       </div>
-    )
-  }
-  {
-    tags.length > 0 && (
-      <ul class="chips" aria-label="Tags">
-        {tags.map((tag) => (
-          <li style="display:contents">
-            <a class="chip" href={withBase(`/tags/${tag}/`)}>
-              {tag}
-            </a>
-          </li>
-        ))}
-      </ul>
     )
   }
   <Heading>

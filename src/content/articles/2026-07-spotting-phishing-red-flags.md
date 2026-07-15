@@ -6,6 +6,7 @@ authors: ["Aiko Tanaka", "Marcus Bell"]
 tags: ["phishing", "email", "scams"]
 issue: "2026-07"
 draft: false
+demo: true
 ---
 
 Every semester, someone at TUJ loses an account (or worse, money) to a phishing email. Not because they're careless, but because the emails are getting good. The fix isn't paranoia. It's a ten-second habit: before you click anything, scan for these five red flags.

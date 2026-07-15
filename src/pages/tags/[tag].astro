@@ -1,6 +1,7 @@
 ---
 import Base from '../../layouts/Base.astro';
 import ArticleCard from '../../components/ArticleCard.astro';
+import DemoBanner from '../../components/DemoBanner.astro';
 import { collectTags, getPublishedArticles, withBase } from '../../utils/articles';
 
 export async function getStaticPaths() {
@@ -14,6 +15,7 @@ export async function getStaticPaths() {
 const { tag } = Astro.params;
 const { tagged } = Astro.props;
 const allTags = collectTags(await getPublishedArticles());
+const hasDemo = tagged.some((a) => a.data.demo);
 ---
 
 <Base
@@ -46,6 +48,8 @@ const allTags = collectTags(await getPublishedArticles());
       }
     </ul>
   </nav>
+
+  {hasDemo && <DemoBanner context="list" />}
 
   <ul class="card-grid">
     {tagged.map((article) => <ArticleCard article={article} headingLevel="h2" />)}

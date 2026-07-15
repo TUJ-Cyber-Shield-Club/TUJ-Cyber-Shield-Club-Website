@@ -6,6 +6,7 @@ authors: ["Yuki Sato"]
 tags: ["passwords", "passkeys", "accounts"]
 issue: "2026-07"
 draft: false
+demo: true
 ---
 
 Let's be honest about how most of us handle passwords: one decent password, reused everywhere, with small variations when a site forces a number or a symbol. The problem isn't laziness. It's math. The average student has more than 80 accounts. No one can memorize 80 strong, unique passwords, and the websites pretending you can are the unreasonable ones.

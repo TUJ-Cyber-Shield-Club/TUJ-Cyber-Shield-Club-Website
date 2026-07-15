@@ -1,5 +1,6 @@
 ---
 import Base from '../../layouts/Base.astro';
+import DemoBanner from '../../components/DemoBanner.astro';
 import {
   collectIssues,
   formatDate,
@@ -11,6 +12,7 @@ import {
 
 const articles = await getPublishedArticles();
 const issues = collectIssues(articles);
+const hasDemo = articles.some((a) => a.data.demo);
 ---
 
 <Base
@@ -21,6 +23,8 @@ const issues = collectIssues(articles);
   <p class="intro meta">
     Cyber Shield publishes one issue a month. Here is every issue so far, newest first.
   </p>
+
+  {hasDemo && <DemoBanner context="issue" />}
 
   <div class="issues">
     {

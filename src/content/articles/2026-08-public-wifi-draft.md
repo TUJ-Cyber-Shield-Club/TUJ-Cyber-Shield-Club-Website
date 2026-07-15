@@ -6,6 +6,7 @@ authors: ["Aiko Tanaka"]
 tags: ["wifi", "privacy"]
 issue: "2026-08"
 draft: true
+demo: true
 ---
 
 > **Editor's note:** this is a draft for the August issue. It should never appear on the published site, in search, or in the sitemap. If you can read this on the live site, something is broken, so tell the web team!

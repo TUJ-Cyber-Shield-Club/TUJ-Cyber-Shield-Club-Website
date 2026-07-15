@@ -1,12 +1,14 @@
 ---
 import Base from '../layouts/Base.astro';
 import ArticleCard from '../components/ArticleCard.astro';
+import DemoBanner from '../components/DemoBanner.astro';
 import { getPublishedArticles, issueLabel, withBase } from '../utils/articles';
 
 const articles = await getPublishedArticles();
 const latestIssue = articles[0]?.data.issue;
 const latestIssueArticles = articles.filter((a) => a.data.issue === latestIssue);
 const earlier = articles.filter((a) => a.data.issue !== latestIssue).slice(0, 6);
+const hasDemo = articles.some((a) => a.data.demo);
 ---
 
 <Base
@@ -25,6 +27,8 @@ const earlier = articles.filter((a) => a.data.issue !== latestIssue).slice(0, 6)
       <a class="button button--ghost" href={withBase('/about/')}>About the club</a>
     </div>
   </section>
+
+  {hasDemo && <DemoBanner context="list" />}
 
   {
     latestIssue && (

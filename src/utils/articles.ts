@@ -4,7 +4,7 @@ export type Article = CollectionEntry<'articles'>;
 
 /**
  * All articles that should appear on the site, newest first.
- * Drafts are excluded from production builds (pages, RSS, sitemap, search)
+ * Drafts are excluded from production builds (pages, sitemap, search)
  * but stay visible in `astro dev` so writers can preview them locally.
  */
 export async function getPublishedArticles(): Promise<Article[]> {

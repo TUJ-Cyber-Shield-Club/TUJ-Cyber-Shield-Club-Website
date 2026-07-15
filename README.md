@@ -19,7 +19,7 @@ npm run preview  # serve the production build locally
 
 Notes:
 
-- In `npm run dev`, draft articles (`draft: true`) are visible so writers can preview them. Production builds exclude drafts from pages, RSS, sitemap, and search.
+- In `npm run dev`, draft articles (`draft: true`) are visible so writers can preview them. Production builds exclude drafts from pages, sitemap, and search.
 - The search box only works after `npm run build` (the index is generated then). Use `npm run preview` to test it locally.
 - If an article's frontmatter is invalid (missing title, description over 160 characters, bad date, etc.), the build fails with a message naming the file and field. That's intentional — fix the frontmatter and rebuild.
 
@@ -28,7 +28,7 @@ Notes:
 ```
 src/content/articles/   ← one Markdown file per article (see PUBLISHING.md)
 src/assets/             ← the club logo + article cover images
-src/pages/              ← page templates (home, articles, issues, tags, about, 404, RSS)
+src/pages/              ← page templates (home, articles, issues, tags, about, 404)
 src/components/         ← header, footer, cards, search, theme toggle
 src/styles/             ← design tokens and global CSS
 public/                 ← favicons, robots.txt, social-preview image
@@ -51,27 +51,10 @@ One-time Cloudflare project setup (an admin does this once):
 The site is served at:
 
 ```
-https://tuj-cyber-shield-club-website.pages.dev/
+https://tujcybershield.com/
 ```
 
-Because Cloudflare serves from the domain root, there is no `base` path in [astro.config.mjs](astro.config.mjs) (unlike a GitHub Pages project site). Cloudflare Pages is free with generous limits and works with private repos.
-
-## Custom domain setup (when the club buys one)
-
-Say the club buys `cybershield.example` (replace with the real domain everywhere below).
-
-**1. One-line config change** in [astro.config.mjs](astro.config.mjs):
-
-```diff
--  site: 'https://tuj-cyber-shield-club-website.pages.dev',
-+  site: 'https://cybershield.example',
-```
-
-Also update the `Sitemap:` URL in [public/robots.txt](public/robots.txt) to the new domain.
-
-**2. Add the domain in Cloudflare:** the Pages project → **Custom domains → Set up a custom domain**, and enter the domain.
-
-**3. DNS:** if the domain is already on Cloudflare, it adds the record for you automatically. If the domain is registered elsewhere, add a `CNAME` record pointing the domain (or `www`) at `tuj-cyber-shield-club-website.pages.dev`. Cloudflare provisions the HTTPS certificate automatically, usually within minutes.
+(The Cloudflare `https://tuj-cyber-shield-club-website.pages.dev/` address still works as a fallback.) The custom domain is configured in the Cloudflare Pages project under **Custom domains**. Because Cloudflare serves from the domain root, there is no `base` path in [astro.config.mjs](astro.config.mjs) (unlike a GitHub Pages project site). Cloudflare Pages is free with generous limits and works with private repos.
 
 ## Credits
 

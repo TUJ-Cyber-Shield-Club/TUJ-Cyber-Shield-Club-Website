@@ -123,7 +123,9 @@ const isCurrent = (href: string) => {
   nav ul {
     display: flex;
     align-items: center;
-    gap: clamp(0.25rem, 2vw, 0.75rem);
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 0.15rem clamp(0.25rem, 2vw, 0.75rem);
     list-style: none;
     margin: 0;
     padding: 0;

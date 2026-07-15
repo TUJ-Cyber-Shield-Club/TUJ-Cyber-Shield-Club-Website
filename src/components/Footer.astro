@@ -13,12 +13,12 @@ const year = new Date().getFullYear();
         everyday students, one issue a month.
       </p>
       <nav aria-label="Footer">
+        <p class="nav-label">Explore</p>
         <ul>
           <li><a href={withBase('/articles/')}>Articles</a></li>
           <li><a href={withBase('/issues/')}>Issues</a></li>
           <li><a href={withBase('/team/')}>Meet the team</a></li>
           <li><a href={withBase('/about/')}>About the club</a></li>
-          <li><a href={withBase('/rss.xml')}>RSS feed</a></li>
         </ul>
       </nav>
     </div>
@@ -41,7 +41,8 @@ const year = new Date().getFullYear();
   .cols {
     display: flex;
     justify-content: space-between;
-    gap: 2rem;
+    align-items: flex-start;
+    gap: 2rem 4rem;
     flex-wrap: wrap;
     margin-top: 1.25rem;
   }
@@ -50,12 +51,22 @@ const year = new Date().getFullYear();
     max-width: 34rem;
     color: var(--text-muted);
     font-size: 0.95rem;
+    line-height: 1.6;
+  }
+
+  .nav-label {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 0.9rem;
   }
 
   nav ul {
     display: flex;
-    flex-wrap: wrap;
-    gap: 0.25rem 1.5rem;
+    flex-direction: column;
+    gap: 0.6rem;
     list-style: none;
     margin: 0;
     padding: 0;
@@ -74,7 +85,9 @@ const year = new Date().getFullYear();
   }
 
   .fine {
-    margin-top: 1.75rem;
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--line);
     color: var(--text-muted);
     font-size: 0.82rem;
   }

@@ -53,7 +53,7 @@ Then delete all the lines starting with `#` (those are instructions, not content
 3. Keep **"Commit directly to the `main` branch"** selected.
 4. Click **Commit changes**.
 
-That's it. Cloudflare Pages now builds and deploys the site automatically. After ~2 minutes, refresh the live site and your article is up — on the home page, the articles list, its issue page, its tags, the RSS feed, and in search.
+That's it. Cloudflare Pages now builds and deploys the site automatically. After ~2 minutes, refresh the live site and your article is up — on the home page, the articles list, its issue page, its tags, and in search.
 
 An admin can watch the progress in the Cloudflare dashboard (Workers & Pages → the project → Deployments): a build in progress, a green "Success" when it's live, or a red "Failed" if the build rejected something (usually a frontmatter mistake — the log names the file and field). If a build fails, edit your file on GitHub, fix the field, and commit again.
 
@@ -73,7 +73,7 @@ The site automatically resizes and optimizes it for every screen.
 
 ## Working on drafts
 
-Set `draft: true` and commit as often as you like — the article stays completely off the live site (no page, no search result, no RSS entry). When the editorial team gives the OK, edit the file on GitHub, flip it to `draft: false`, and commit. That single change publishes it.
+Set `draft: true` and commit as often as you like — the article stays completely off the live site (no page, no search result, not in the sitemap). When the editorial team gives the OK, edit the file on GitHub, flip it to `draft: false`, and commit. That single change publishes it.
 
 ## Fixing a typo in a published article
 

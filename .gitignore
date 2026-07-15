@@ -11,3 +11,5 @@ npm-debug.log*
 .env.production
 # OS
 .DS_Store
+# private local changelog (kept out of the public repo)
+CHANGELOG.md

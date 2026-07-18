@@ -14,6 +14,7 @@ import type { ImageMetadata } from 'astro';
 import carlMasters from '../assets/team/carl-masters.png';
 import ruoanLi from '../assets/team/ruoan-li.png';
 import uchidaTerence from '../assets/team/uchida-terence.png';
+import bhushithGujjalaHari from '../assets/team/bhushith-gujjala-hari.png';
 
 // A circular icon button under a member's bio. `type` picks the brand logo
 // (see the ICONS map in src/components/SocialIcons.astro for supported types:
@@ -62,5 +63,15 @@ export const team: TeamMember[] = [
     bio: 'Always curious',
     avatar: uchidaTerence,
     links: [{ type: 'email', href: 'mailto:uchidaterence@gmail.com' }],
+  },
+  {
+    name: 'Bhushith Gujjala Hari',
+    role: 'Member',
+    bio: "Hello, I'm a passionate computer science student who is interested in Machine Learning and Game Development. I am also the leader of the CS Society and help organize hackathons and other events. I am currently in my fourth year Computer Science major with experience from multiple solo projects, 2 research projects in Machine Learning, and two internships. Outside of work and University, I love to make pixel art and code games as a hobby.",
+    avatar: bhushithGujjalaHari,
+    links: [
+      { type: 'linkedin', href: 'https://www.linkedin.com/in/bhushith-gujjala-hari-9a5876276' },
+      { type: 'github', href: 'https://github.com/teddyboy999' },
+    ],
   },
 ];
